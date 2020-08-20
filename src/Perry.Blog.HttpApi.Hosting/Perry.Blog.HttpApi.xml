@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Perry.Blog.HttpApi</name>
+    </assembly>
+    <members>
+        <member name="M:Perry.Blog.HttpApi.Controllers.BlogController.InsertPostAsync(Perry.Blog.Application.Contracts.Blog.PostDto)">
+            <summary>
+            添加博客
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -8,11 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Perry.Blog.Application.Caching\Perry.Blog.Application.Caching.csproj" />
     <ProjectReference Include="..\Perry.Blog.Domain\Perry.Blog.Domain.csproj" />
     <ProjectReference Include="..\Perry.Blog.Application.Contracts\Perry.Blog.Application.Contracts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Volo.Abp.AutoMapper" Version="3.0.5" />
     <PackageReference Include="Volo.Abp.Identity.Application" Version="3.0.5" />
   </ItemGroup>
 

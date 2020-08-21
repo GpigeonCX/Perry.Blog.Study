@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Perry.Blog.EntityFrameworkCore;
 using Perry.Blog.Swagger;
@@ -20,6 +22,13 @@ namespace Perry.Blog.HttpApi.Hosting
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            context.Services.AddRouting(options =>
+            {
+                // 设置URL为小写
+                options.LowercaseUrls = true;
+                // 在生成的URL后面添加斜杠
+                options.AppendTrailingSlash = true;
+            });
             base.ConfigureServices(context);
         }
 
@@ -37,7 +46,19 @@ namespace Perry.Blog.HttpApi.Hosting
 
             // 路由
             app.UseRouting();
-
+            /*
+            //使用HSTS的中间件，该中间件添加了严格传输安全头。
+            app.UseHsts();
+            //直接使用默认的跨域配置。
+            app.UseCors();
+            //HTTP请求转HTTPS。
+            app.UseHttpsRedirection();
+            //转发将标头代理到当前请求，配合 Nginx 使用，获取用户真实IP。
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+            */
             // 路由映射
             app.UseEndpoints(endpoints =>
             {

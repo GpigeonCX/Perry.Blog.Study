@@ -16,16 +16,17 @@ namespace Perry.Blog.Application.Blog.Impl
 
         public async Task<bool> InsertPostAsync(PostDto dto)
         {
-            var entity = new Post
-            {
-                Title = dto.Title,
-                Author = dto.Author,
-                Url = dto.Url,
-                Html = dto.Html,
-                Markdown = dto.Markdown,
-                CategoryId = dto.CategoryId,
-                CreationTime = dto.CreationTime
-            };
+            //var entity = new Post
+            //{
+            //    Title = dto.Title,
+            //    Author = dto.Author,
+            //    Url = dto.Url,
+            //    Html = dto.Html,
+            //    Markdown = dto.Markdown,
+            //    CategoryId = dto.CategoryId,
+            //    CreationTime = dto.CreationTime
+            //};
+            var entity= ObjectMapper.Map<PostDto, Post>(dto);
 
             var post = await _postRepository.InsertAsync(entity);
             return post != null;
